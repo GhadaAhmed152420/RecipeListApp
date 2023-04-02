@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_list_app/models/recipe_api.dart';
-import 'package:recipe_list_app/views/widgets/recipe_card.dart';
 import '../models/recipe.dart';
+import '../widgets/recipe_card.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeState extends State<Home> {
   late List<Recipe> _recipes;
   bool _isLoading = true;
 
@@ -29,39 +29,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.restaurant_menu,
-                color: Colors.black,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Food Recipe",
-                style: TextStyle(color: Colors.black),
-              ),
-            ],
-          ),
-        ),
-        body: _isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: _recipes.length,
-                itemBuilder: (context, index) {
-                  return RecipeCard(
-                      title: _recipes[index].name,
-                      cookTime: _recipes[index].totalTime,
-                      rating: _recipes[index].rating.toString(),
-                      thumbnailUrl: _recipes[index].images);
-                },
-              ));
+    return _isLoading
+          ? const Center(child: CircularProgressIndicator(color: Colors.amber,))
+          : ListView.builder(
+              itemCount: _recipes.length,
+              itemBuilder: (context, index) {
+                return RecipeCard(
+                    title: _recipes[index].name,
+                    cookTime: _recipes[index].totalTime,
+                    rating: _recipes[index].rating.toString(),
+                    thumbnailUrl: _recipes[index].images);
+              },
+            );
   }
 }
