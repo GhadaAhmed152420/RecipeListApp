@@ -1,7 +1,7 @@
 name: recipe_list_app
 description: A new Flutter project.
 
-publish_to
+publish_to:
 
 version: 1.0.0+1
 

@@ -75,7 +75,7 @@ class Profile extends StatelessWidget {
                 OutlinedButton(
                   onPressed: () {
                     AuthController.instance.logOut();
-                    Get.offAllNamed('/mainScreen');
+                    Get.offAllNamed('/login');
                   },
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -89,7 +89,8 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber,
                     padding: const EdgeInsets.symmetric(horizontal: 50),
